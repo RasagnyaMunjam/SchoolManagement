@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app1 import views
+from app2 import views as v2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.listofstu),
+    path("",v2.teacherlogin),
+    path("logout",v2.teacherlogout),
+    path("home",views.listofstu),
     path("test/<int:pk>/", views.present,name='present'),
     path("absent/<int:pk>/", views.absent, name='absent')
 
