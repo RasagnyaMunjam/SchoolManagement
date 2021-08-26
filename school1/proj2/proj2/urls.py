@@ -20,7 +20,8 @@ from app2 import views as v2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",v2.teacherlogin),
+    path("",v2.home),
+    path("login",v2.teacherlogin),
     path("logout",v2.teacherlogout),
     path("home",views.listofstu),
     path("test/<int:pk>/", views.present,name='present'),

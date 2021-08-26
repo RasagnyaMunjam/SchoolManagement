@@ -5,8 +5,10 @@ from .models import Numofstudents, Attendence
 from datetime import datetime
 from django.conf import settings
 import socket
+
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
+
 
 # Create your views here.
 
@@ -24,7 +26,7 @@ def present(request, pk):
         attend = Attendence(Name=data.Name, datefield=test.strftime('%Y-%m-%d'), status='present')
         attend.save()
         return HttpResponse('Data stored successful')
-    return HttpResponseRedirect('/')
+    return HttpResponse('Attendance already captured')
 
 
 def absent(request, pk):
@@ -37,7 +39,7 @@ def absent(request, pk):
             f"child attendance status",
             f"your child {data.Name} is absent today please confirm with us",
             settings.EMAIL_HOST_USER,
-            [data.email]
+            [  ]
         )
-        return HttpResponse('Data stored successful')
-    return HttpResponseRedirect('/')
+        return HttpResponse('Attendance captured for the day')
+    return HttpResponse('Attendance already captured')
